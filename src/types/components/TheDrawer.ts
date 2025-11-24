@@ -3,4 +3,5 @@ export enum DrawerTitles {
   EDIT_MOVIE = 'Edit Movie',
   CREATE_MOVIE = 'Create Movie',
   SEARCH_MOVIES = 'Search Movies',
+  MOBILE_FILTER = 'Filter',
 }

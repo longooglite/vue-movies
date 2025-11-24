@@ -20,7 +20,6 @@ provide(DefaultApolloClient, useApolloClient() as ApolloClient<any>)
       <TMDBSearchProvider>
         <ScreenSizeProvider>
           <TheHeader />
-          <TheFilterRow />
           <MainMovieList />
           <TheDrawer />
         </ScreenSizeProvider>

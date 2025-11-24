@@ -6,6 +6,7 @@ export enum DrawerIds {
   NAVIGATION = 'navigation',
   EDIT_MOVIE = 'editMovie',
   SEARCH_MOVIES = 'searchMovies',
+  MOBILE_FILTER = 'mobileFilter',
 }
 
 export interface DrawerProviderReturn {

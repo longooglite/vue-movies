@@ -51,6 +51,9 @@ const toggleOpen = () => {
   cursor: pointer;
   width: 100%;
 }
+.dropdown-filter button {
+  margin: 0 10px;
+}
 .dropdown-filter-label {
   font-size: 1.15rem;
   text-transform: capitalize;

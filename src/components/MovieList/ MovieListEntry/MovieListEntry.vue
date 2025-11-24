@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject, provide, ref } from 'vue'
+import { inject, provide, ref, type Ref } from 'vue'
 import { Movie } from '../../../types/types'
 import MovieListEntryTitle from './MovieListEntryTitle/MovieListEntryTitle.vue'
 import MovieListEntryDetails from './MovieListEntryDetails/MovieListEntryDetails.vue'
@@ -9,7 +9,7 @@ const props = defineProps<{
 }>()
 const extendedDetails = ref(false)
 provide('movie-list-entry-movie', props.movie)
-const singleColumn = inject('movie-list-single-column') as boolean
+const singleColumn = inject('movie-list-single-column') as Ref<boolean>
 const showDetails = ref(
   Boolean(
     props.movie.country ||
@@ -24,6 +24,7 @@ const showDetails = ref(
   <div
     class="movie-list-entry"
     :class="{ 'single-column': singleColumn, 'double-column': !singleColumn }"
+    :style="{ height: extendedDetails ? 'auto' : '100px' }"
   >
     <MovieListEntryTitle :title="String(props.movie.title)" />
     <MovieListEntryDetails movieKey="director" />
@@ -55,6 +56,8 @@ const showDetails = ref(
   margin-bottom: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
+  transition: height 0.1s ease-in-out;
+  interpolate-size: allow-keywords;
 }
 .movie-list-entry.single-column {
   width: calc(100% - 50px);

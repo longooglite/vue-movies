@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MovieListEntry from './ MovieListEntry/MovieListEntry.vue'
 import { Movie } from '../../types/types'
-import { provide } from 'vue'
+import { provide, computed } from 'vue'
 
 const props = defineProps<{
   movies: Movie[] | Omit<Movie, 'id'>[]
@@ -11,7 +11,7 @@ const props = defineProps<{
 }>()
 
 provide('movie-list-entry-click-callback', props.clickCallback)
-provide('movie-list-single-column', props.singleColumn)
+provide('movie-list-single-column', computed(() => Boolean(props.singleColumn)))
 </script>
 
 <template>

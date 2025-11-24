@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject } from 'vue'
+import { inject, type Ref } from 'vue'
 import { movieFilterProviderKey } from '../../types/providers/MovieFilterProvider'
 import { type MovieFilterProviderReturn } from '../../types/providers/MovieFilterProvider'
 import { awsMovieProviderKey } from '../../types/providers/AwsMovieProvider'
@@ -20,6 +20,12 @@ const clickCallback = (movie: Movie) => {
   editMovieStore.setMovie(movie)
   drawerStore.openDrawer(DrawerIds.EDIT_MOVIE)
 }
+const screenSize = inject('screenSize') as Ref<string>
+const logScreenSize = () => {
+  console.log(screenSize.value)
+}
+console.log(logScreenSize())
+console.log(logScreenSize)
 </script>
 
 <template>
@@ -27,6 +33,7 @@ const clickCallback = (movie: Movie) => {
     :movies="filteredMovies"
     :loading="loading"
     :clickCallback="clickCallback"
+    :singleColumn="screenSize === 'mobile'"
   />
 </template>
 <style scoped>

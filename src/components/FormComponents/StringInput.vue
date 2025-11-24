@@ -13,7 +13,7 @@ const updateStringValue = (event: Event) => {
 <template>
   <div className="string-input-container">
     <label>
-      <span class="string-input-label">{{ props.label }}</span>
+      <span class="string-input-label" v-if="props.label">{{ props.label }}</span>
       <input
         type="text"
         :disabled="props.disabled"
