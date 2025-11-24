@@ -1,0 +1,58 @@
+## Project context
+- Vue 3 + TypeScript + Vite 5 + Pinia + Apollo GraphQL.
+- Unit tests: Vitest (configured in `vitest.config.ts`), E2E: Cypress.
+- ESM enabled (`"type": "module"`). Path alias `@` → `src`.
+
+## Global rules
+- Keep changes minimal, targeted, and readable. Match existing formatting. Use Prettier 3.
+- Preserve existing indentation style and width in every file.
+- Use absolute paths when referencing files or running commands.
+- Avoid introducing new dependencies unless necessary; justify when adding any.
+- After making changes, run related unit tests and fix failures introduced by the edit.
+
+## TypeScript and code quality
+- Strongly prefer explicit types on exported/public APIs; avoid `any`.
+- Use descriptive names (no 1–2 letter identifiers). Favor early returns.
+- Do not add unnecessary try/catch; only catch with meaningful handling.
+- Keep comments brief and only for non-obvious intent, invariants, or caveats.
+
+## Vue conventions
+- Use Composition API with `<script setup lang="ts">` in SFCs.
+- Use `defineProps`/`defineEmits` as needed; prefer typed props and emits.
+- Keep components small and focused. Use PascalCase for component and file names.
+- Co-locate component-specific styles; avoid global leakage.
+
+## State and data
+- Use Pinia stores under `src/stores/` with typed state/getters/actions.
+- GraphQL operations live under `src/graphql/{queries,mutations}` and are consumed via Apollo composables.
+- Reuse existing helpers like `src/utils/useApolloClient.ts` where applicable.
+
+## Testing guidance
+- Before running unit tests, use nvm to switch to node 22
+- Default unit test environment is Node (see `vitest.config.ts`). Prefer targeted test runs (single file or directory) when iterating.
+- If a Web Crypto dependency appears in Node (e.g., `crypto.getRandomValues`), polyfill for tests with:
+  - Create a test setup file (e.g., `tests/setup/vitest.setup.ts`) and add:
+    ```ts
+    import { webcrypto } from 'node:crypto'
+    if (!globalThis.crypto) globalThis.crypto = webcrypto as unknown as Crypto
+    ```
+  - Reference it in `vitest.config.ts` via `test.setupFiles`.
+
+## CI/commands
+- Common commands:
+  - Run a single unit test file: `yarn vitest run <abs-path-to-test>`
+  - Run all unit tests: `yarn test`
+  - E2E: `yarn cy:run` or `yarn cy:open`
+
+## File organization
+- Respect the existing directory structure (components, stores, providers, utils, graphql, tests).
+- Keep shared types under `src/types/` and component-specific types near their components if they are not reused.
+
+## Security and performance
+- Avoid leaking secrets into code or logs. Validate inputs on boundaries.
+- Prefer O(n) approaches and avoid unnecessary reactivity watchers/effects in Vue.
+
+## When in doubt
+- Follow existing patterns in this repo first.
+- Prefer small, incremental edits with tests.
+
