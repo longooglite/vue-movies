@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, provide, reactive } from 'vue'
+import { computed, inject, provide, reactive, getCurrentInstance } from 'vue'
 import { movieFilterProviderKey } from '../types/providers/MovieFilterProvider'
 import {
   awsMovieProviderKey,
@@ -45,7 +45,7 @@ const FILTERS: (
     options:
       movies.value
         .filter((movie: Movie) => movie.decade)
-        .map((movie: Movie) => movie.decade as string) ?? [],
+        .map((movie: Movie) => movie.decade as string),
     validator: multiSelectValidator(FILTER_KEYS.DECADE),
   },
   {
@@ -56,7 +56,7 @@ const FILTERS: (
     options:
       movies.value
         .filter((movie: Movie) => movie.country)
-        .map((movie: Movie) => movie.country as string) ?? [],
+        .map((movie: Movie) => movie.country as string),
     validator: multiSelectValidator(FILTER_KEYS.COUNTRY),
   },
   {
@@ -67,7 +67,7 @@ const FILTERS: (
     options:
       movies.value
         .filter((movie: Movie) => movie.genre)
-        .map((movie: Movie) => movie.genre as string) ?? [],
+        .map((movie: Movie) => movie.genre as string),
     validator: multiSelectValidator(FILTER_KEYS.GENRE),
   },
   {
@@ -78,7 +78,7 @@ const FILTERS: (
     options:
       movies.value
         .filter((movie: Movie) => movie.format)
-        .map((movie: Movie) => movie.format as string) ?? [],
+        .map((movie: Movie) => movie.format as string),
     validator: multiSelectValidator(FILTER_KEYS.FORMAT),
   },
   {
@@ -126,11 +126,14 @@ const filterMovies = (movies: Movie[]) => {
   return filteredMovies
 }
 
-provide(movieFilterProviderKey, {
+const providedValue = {
   filteredMovies: computed(() => filterMovies(movies.value)),
   updateActiveFilters,
   filters: computed(() => FILTERS),
-})
+}
+
+provide(movieFilterProviderKey, providedValue)
+
 </script>
 
 <template><slot></slot></template>

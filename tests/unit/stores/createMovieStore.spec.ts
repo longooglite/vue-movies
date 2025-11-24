@@ -1,0 +1,42 @@
+import { describe, it, expect, beforeEach } from 'vitest'
+import { setActivePinia, createPinia } from 'pinia'
+import { useCreateMovieStore } from '@/stores/createMovieStore/createMovieStore'
+
+describe('createMovieStore', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia())
+  })
+
+  it('initializes with default movie state', () => {
+    const store = useCreateMovieStore()
+    expect(store.movie).toBeDefined()
+    expect(store.movie.title).toBe('')
+    expect(store.movie.year).toBe(0)
+    expect(store.movie.director).toBe('')
+    expect(store.movie.decade).toBe('')
+    expect(store.movie.country).toBe('')
+    expect(store.movie.genre).toEqual([])
+  })
+
+  it('setMovie sets the movie for creation', () => {
+    const store = useCreateMovieStore()
+    store.setMovie({
+      title: 'T',
+      year: 2000,
+      director: 'D',
+      decade: '2000s',
+      country: 'US',
+      genre: ['Drama'],
+    })
+    expect(store.movie).toMatchObject({
+      title: 'T',
+      year: 2000,
+      director: 'D',
+      decade: '2000s',
+      country: 'US',
+      genre: ['Drama'],
+    })
+  })
+})
+
+
