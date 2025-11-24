@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Running test coverage (requires >= 75%)..."
+
+# Load nvm if available and use Node 22 for tests (per repo rules)
+if [ -z "${NVM_DIR:-}" ]; then
+  export NVM_DIR="$HOME/.nvm"
+fi
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  # shellcheck source=/dev/null
+  . "$NVM_DIR/nvm.sh"
+  nvm use 22 >/dev/null 2>&1 || true
+fi
+
+# Prefer absolute yarn path on macOS Homebrew if available
+YARN_BIN="/opt/homebrew/bin/yarn"
+if [ ! -x "$YARN_BIN" ]; then
+  YARN_BIN="$(command -v yarn || true)"
+fi
+
+if [ -z "$YARN_BIN" ]; then
+  echo "Error: yarn not found in PATH." >&2
+  exit 1
+fi
+
+# Run coverage; vitest config enforces thresholds and will exit non-zero if below
+$YARN_BIN test:coverage --silent
+
+echo "Coverage OK. Proceeding with push."
+
+
