@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, provide, reactive } from 'vue'
+import { computed, inject, provide, reactive, getCurrentInstance } from 'vue'
 import { movieFilterProviderKey } from '../types/providers/MovieFilterProvider'
 import {
   awsMovieProviderKey,
@@ -126,11 +126,14 @@ const filterMovies = (movies: Movie[]) => {
   return filteredMovies
 }
 
-provide(movieFilterProviderKey, {
+const providedValue = {
   filteredMovies: computed(() => filterMovies(movies.value)),
   updateActiveFilters,
   filters: computed(() => FILTERS),
-})
+}
+
+provide(movieFilterProviderKey, providedValue)
+
 </script>
 
 <template><slot></slot></template>
