@@ -68,7 +68,7 @@ const handleCountrySelect = (newCountry: string) => {
 }
 
 const saveMovie = async () => {
-  const result = await updateMovie(props.movie.id, {
+  await updateMovie(props.movie.id, {
     title: title.value,
     year: year.value,
     director: director.value,

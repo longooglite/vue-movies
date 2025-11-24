@@ -3,7 +3,7 @@ import {
   StringInputEmits,
   StringInputProps,
 } from '../../types/components/FormComponents/FormComponents'
-const emit = defineEmits<StringInputEmits>()
+defineEmits<StringInputEmits>()
 const props = defineProps<StringInputProps>()
 const model = defineModel()
 const updateStringValue = (event: Event) => {

@@ -3,7 +3,7 @@ import {
   NumberInputEmits,
   NumberInputProps,
 } from '../../types/components/FormComponents/FormComponents'
-const emit = defineEmits<NumberInputEmits>()
+defineEmits<NumberInputEmits>()
 const props = defineProps<NumberInputProps>()
 const model = defineModel()
 const updateNumberValue = (event: Event) => {
