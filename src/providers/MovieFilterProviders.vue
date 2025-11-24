@@ -45,7 +45,7 @@ const FILTERS: (
     options:
       movies.value
         .filter((movie: Movie) => movie.decade)
-        .map((movie: Movie) => movie.decade as string) ?? [],
+        .map((movie: Movie) => movie.decade as string),
     validator: multiSelectValidator(FILTER_KEYS.DECADE),
   },
   {
@@ -56,7 +56,7 @@ const FILTERS: (
     options:
       movies.value
         .filter((movie: Movie) => movie.country)
-        .map((movie: Movie) => movie.country as string) ?? [],
+        .map((movie: Movie) => movie.country as string),
     validator: multiSelectValidator(FILTER_KEYS.COUNTRY),
   },
   {
@@ -67,7 +67,7 @@ const FILTERS: (
     options:
       movies.value
         .filter((movie: Movie) => movie.genre)
-        .map((movie: Movie) => movie.genre as string) ?? [],
+        .map((movie: Movie) => movie.genre as string),
     validator: multiSelectValidator(FILTER_KEYS.GENRE),
   },
   {
@@ -78,7 +78,7 @@ const FILTERS: (
     options:
       movies.value
         .filter((movie: Movie) => movie.format)
-        .map((movie: Movie) => movie.format as string) ?? [],
+        .map((movie: Movie) => movie.format as string),
     validator: multiSelectValidator(FILTER_KEYS.FORMAT),
   },
   {

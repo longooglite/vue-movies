@@ -10,7 +10,7 @@ const getOptionsForKey = (key: keyof Movie) => (movies: Movie[]) => {
           .map((movie: Movie) => movie[key] as string)
           .sort((a: string, b: string) => a.localeCompare(b)),
       ),
-    ) ?? []
+    )
   )
 }
 

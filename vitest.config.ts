@@ -15,6 +15,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'json-summary'],
+      exclude: ['src/types/components/**'],
       thresholds: {
         lines: 75,
         functions: 75,

@@ -113,6 +113,24 @@ describe('MovieFilterProviders', () => {
     provided.updateActiveFilters('format', ['BluRay'])
     expect(provided.filteredMovies.value.map((m) => m.id)).toEqual(['1'])
   })
+
+  it('filters by year when year filter is active', () => {
+    const { provided } = mountWithMovies([
+      { id: '1', title: 'A', year: 2000, director: 'D' },
+      { id: '2', title: 'B', year: 2001, director: 'E' },
+    ])
+    provided.updateActiveFilters('year', 2001)
+    expect(provided.filteredMovies.value.map((m) => m.id)).toEqual(['2'])
+  })
+
+  it('provides decade options derived from movies', () => {
+    const { provided } = mountWithMovies([
+      { id: '1', title: 'A', year: 1995, decade: '1990s', director: 'D' } as Movie,
+      { id: '2', title: 'B', year: 2001, decade: '2000s', director: 'E' } as Movie,
+    ])
+    const decadeFilter = provided.filters.value.find((f) => f.key === 'decade') as any
+    expect(decadeFilter.options).toEqual(['1990s', '2000s'])
+  })
 })
 
 
