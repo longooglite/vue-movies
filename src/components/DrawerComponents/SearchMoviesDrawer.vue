@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import SearchForm from '../SearchForm/SearchForm.vue'
 import MovieList from '../MovieList/MovieList.vue'
 import { ref } from 'vue'
@@ -11,28 +11,28 @@ const drawerStore = useDrawerStore()
 const createMovieStore = useCreateMovieStore()
 const searchResults = ref<Omit<Movie, 'id'>[]>([])
 const updateSearchResults = (results: Omit<Movie, 'id'>[]) => {
-    searchResults.value = results
+  searchResults.value = results
 }
 const clickCallback = (movie: Movie) => {
-    createMovieStore.setMovie(movie)
-    drawerStore.openDrawer(DrawerIds.CREATE_MOVIE)
+  createMovieStore.setMovie(movie)
+  drawerStore.openDrawer(DrawerIds.CREATE_MOVIE)
 }
 </script>
 <template>
-    <div class="search-movies-drawer">
-        <SearchForm @update:searchResults="updateSearchResults" />
-        <MovieList
-            :movies="searchResults"
-            :loading="false"
-            :singleColumn="true"
-            :clickCallback="clickCallback"
-        />
-    </div>
+  <div class="search-movies-drawer">
+    <SearchForm @update:searchResults="updateSearchResults" />
+    <MovieList
+      :movies="searchResults"
+      :loading="false"
+      :singleColumn="true"
+      :clickCallback="clickCallback"
+    />
+  </div>
 </template>
 <style scoped>
 .search-movies-drawer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 </style>
