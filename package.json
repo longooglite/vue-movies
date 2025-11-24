@@ -14,9 +14,7 @@
     "cy:run": "cypress run",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "postinstall": "git config core.hooksPath .githooks || true && chmod +x .githooks/pre-push || true"
+    "test": "vitest run"
   },
   "dependencies": {
     "@apollo/client": "3",
@@ -30,14 +28,13 @@
   "devDependencies": {
     "@pinia/nuxt": "^0.5.0",
     "@vitejs/plugin-vue": "^5.0.0",
-    "@vitest/coverage-v8": "^4.0.13",
     "cypress": "^13.13.0",
-    "jsdom": "^27.2.0",
+    "jsdom": "^24.0.0",
     "nuxt": "^3.13.0",
     "prettier": "^3.3.3",
     "typescript": "^5.4.0",
     "vite": "^5.0.0",
-    "vue-tsc": "^2.0.29",
-    "vitest": "^4.0.13"
+    "vitest": "^4.0.13",
+    "vue-tsc": "^2.0.29"
   }
 }
