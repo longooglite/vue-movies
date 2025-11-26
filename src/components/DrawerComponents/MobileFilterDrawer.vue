@@ -120,7 +120,8 @@ const watchedValues = computed(() => {
         class="mobile-filter-drawer-expandable-content-values"
         v-if="!watchedExpanded"
       >
-        <span>{{ watchedValues ? 'Yes' : 'No' }}</span>
+        <span v-if="!watchedValues && watchedValues !== null">Not watched</span>
+        <span v-if="watchedValues">Watched</span>
       </div>
       <ExpandableContent :expand="watchedExpanded">
         <BooleanFilter :filterKey="FILTER_KEYS.WATCHED" />

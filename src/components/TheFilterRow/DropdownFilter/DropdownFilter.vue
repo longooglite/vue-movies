@@ -75,8 +75,8 @@ const toggleOpen = () => {
   flex-wrap: wrap;
   font-size: 0.8rem;
   padding: 5px;
-  border-bottom: solid 1px #ccc;
-  border-right: solid 1px #ccc;
-  border-left: solid 1px #ccc;
+  border-bottom: solid 1px var(--border-color);
+  border-right: solid 1px var(--border-color);
+  border-left: solid 1px var(--border-color);
 }
 </style>
