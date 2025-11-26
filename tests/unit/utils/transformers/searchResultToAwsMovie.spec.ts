@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { searchResultToAWSMovie } from '@/utils/transformers/searchResultToAWSMovie'
+import { searchResultToAWSMovie } from '@/utils/transformers/searchResultToAwsMovie'
 import type { SearchMovieResult } from '@/types/types'
 
 describe('searchResultToAWSMovie', () => {
