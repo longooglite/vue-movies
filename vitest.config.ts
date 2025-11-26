@@ -12,6 +12,10 @@ export default defineConfig({
   },
   test: {
     environment: 'node',
+    reporters: ['json', 'default'],
+    outputFile: {
+      json: './test-results.json',
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'json-summary'],
