@@ -2,7 +2,10 @@
 import { computed, inject, ref } from 'vue'
 import { awsMovieProviderKey } from '../../../types/providers/AwsMovieProvider'
 import { AwsMovieProviderReturn } from '../../../types/providers/AwsMovieProvider'
-import { FILTER_KEYS, Movie, CountryData, DecadeData, GenreData, FormatData, WatchedData, DirectorData } from '../../../types/types'
+import { FILTER_KEYS,
+   Movie,
+   MovieData
+} from '../../../types/types'
 import { TOP_ITEMS_COUNT } from '../../../consts/globals'
 import MovieStatsDetails from './MovieStatsDetails/MovieStatsDetails.vue'
 import { PhCaretDown, PhCaretUp } from '@phosphor-icons/vue'
@@ -10,7 +13,7 @@ const emit = defineEmits(['update:expanded'])
 const props = defineProps<{
   filterKey: FILTER_KEYS
   expanded: boolean
-  dataBuilder: (movies: Movie[]) => CountryData[] | DecadeData[] | GenreData[] | FormatData[] | WatchedData[] | DirectorData[]
+  dataBuilder: (movies: Movie[]) => MovieData[]
 }>()
 const expandedIndex = ref(-1)
 const { movies } = inject(awsMovieProviderKey) as AwsMovieProviderReturn
@@ -30,7 +33,7 @@ const topData = computed(() => data.value.slice(0, TOP_ITEMS_COUNT))
       <div 
         class="movie-stats-content-item"
         v-for="(item, index) in topData"
-        :key="item[props.filterKey]"
+        :key="String(item[props.filterKey])"
         :index="index"
        >
         <div class="movie-stats-content-item-label">

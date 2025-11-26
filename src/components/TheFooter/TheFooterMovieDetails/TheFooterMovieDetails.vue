@@ -31,22 +31,22 @@ const updateExpandedFilterKey = (filterKey: FILTER_KEYS) => {
         <p>Watched movies: {{ watchedMovies }}</p>
         <p>Unwatched movies: {{ unwatchedMovies }}</p>
         <MovieStats
-        :filterKey="FILTER_KEYS.DIRECTOR"
-        :dataBuilder="buildDirectorData"
-        :expanded="expandedFilterKey === FILTER_KEYS.DIRECTOR"
-        @update:expanded="updateExpandedFilterKey"
+          :filterKey="FILTER_KEYS.DIRECTOR"
+          :dataBuilder="buildDirectorData"
+          :expanded="expandedFilterKey === FILTER_KEYS.DIRECTOR"
+          @update:expanded="updateExpandedFilterKey"
         />
         <MovieStats
-        :filterKey="FILTER_KEYS.COUNTRY"
-        :dataBuilder="buildCountryData"
-        :expanded="expandedFilterKey === FILTER_KEYS.COUNTRY"
-        @update:expanded="updateExpandedFilterKey"
+          :filterKey="FILTER_KEYS.COUNTRY"
+          :dataBuilder="buildCountryData"
+          :expanded="expandedFilterKey === FILTER_KEYS.COUNTRY"
+          @update:expanded="updateExpandedFilterKey"
         />
         <MovieStats
-        :filterKey="FILTER_KEYS.DECADE"
-        :dataBuilder="buildDecadeData"
-        :expanded="expandedFilterKey === FILTER_KEYS.DECADE"
-        @update:expanded="updateExpandedFilterKey"
+          :filterKey="FILTER_KEYS.DECADE"
+          :dataBuilder="buildDecadeData"
+          :expanded="expandedFilterKey === FILTER_KEYS.DECADE"
+          @update:expanded="updateExpandedFilterKey"
         />
     </div>
 </template>

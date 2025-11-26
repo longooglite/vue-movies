@@ -1,9 +1,4 @@
-import { FILTER_KEYS, Movie } from "../types/types"
-
-interface MovieData {
-  [key: string]: string | number | boolean | string[] | undefined | Movie[]
-  movies: Movie[]
-}
+import { FILTER_KEYS, Movie, MovieData } from "../types/types"
 
 export const buildMovieData = (filterKey: FILTER_KEYS) => (movies: Movie[]) => {
   const data = movies.reduce((acc: MovieData[], movie: Movie) => {
