@@ -9,6 +9,7 @@
 - Use absolute paths when referencing files or running commands.
 - Avoid introducing new dependencies unless necessary; justify when adding any.
 - After making changes, run related unit tests and fix failures introduced by the edit.
+- Do not make git commits or pushes unless explicitly instructed to
 
 ## TypeScript and code quality
 - Strongly prefer explicit types on exported/public APIs; avoid `any`.
