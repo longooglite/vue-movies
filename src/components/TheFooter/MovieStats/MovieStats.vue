@@ -53,7 +53,7 @@ const topData = computed(() => data.value.slice(0, TOP_ITEMS_COUNT))
 <style scoped>
 .movie-stats {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
 }
 .movie-stats-button {
