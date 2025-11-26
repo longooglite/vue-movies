@@ -10,6 +10,7 @@ import TheHeader from './components/TheHeader/TheHeader.vue'
 import TMDBSearchProvider from './providers/TMDBSearchProvider.vue'
 import MainMovieList from './components/MainMovieList/MainMovieList.vue'
 import ScreenSizeProvider from './providers/ScreenSizeProvider.vue'
+import TheFooter from './components/TheFooter/TheFooter.vue'
 provide(DefaultApolloClient, useApolloClient() as ApolloClient<any>)
 </script>
 
@@ -21,6 +22,7 @@ provide(DefaultApolloClient, useApolloClient() as ApolloClient<any>)
           <TheHeader />
           <MainMovieList />
           <TheDrawer />
+          <TheFooter />
         </ScreenSizeProvider>
       </TMDBSearchProvider>
     </MovieFilterProvider>
@@ -41,6 +43,13 @@ provide(DefaultApolloClient, useApolloClient() as ApolloClient<any>)
     'Liberation Mono', 'Courier New', monospace;
   --header-height: 64px;
   --filter-row-height: 56px;
+  --footer-height: 100px;
+  --border-color: #ccc;
+}
+
+* {
+  box-sizing: border-box;
+  interpolate-size: allow-keywords;
 }
 
 html,
@@ -52,6 +61,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+body {
+  padding-bottom: var(--footer-height);
 }
 
 /* Button reset */
