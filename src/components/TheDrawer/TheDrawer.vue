@@ -85,7 +85,7 @@ const screenSize = inject('screenSize') as Ref<string>
   width: 30%;
   height: 100vh;
   background-color: var(--app-bg);
-  border-right: 1px solid #ccc;
+  border-right: 1px solid var(--border-color);
   z-index: 1000;
   padding: 10px;
 }

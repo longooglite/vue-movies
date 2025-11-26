@@ -14,6 +14,29 @@ export interface Movie {
   tmdbPosterPath?: string
   description?: string
 }
+export interface MovieData {
+  [key: string]: string | number | boolean | string[] | undefined | Movie[]
+  movies: Movie[]
+}
+export interface DirectorData extends MovieData {
+  director: string
+}
+export interface CountryData extends MovieData {
+  country: string
+}
+export interface DecadeData extends MovieData {
+  decade: string
+}
+export interface GenreData extends MovieData {
+  genre: string
+}
+export interface FormatData extends MovieData {
+  format: string
+}
+export interface WatchedData extends MovieData {
+  watched: boolean
+}
+
 export enum FILTER_KEYS {
   YEAR = 'year',
   DECADE = 'decade',

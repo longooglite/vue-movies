@@ -47,7 +47,7 @@ import BooleanFilter from '../FilterComponents/BooleanFilter.vue'
   background: var(--app-bg);
   height: var(--filter-row-height);
   width: 100%;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color);
 }
 .filter-row-item {
   display: flex;

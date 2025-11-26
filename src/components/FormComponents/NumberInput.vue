@@ -41,7 +41,7 @@ const updateNumberValue = (event: Event) => {
   background: transparent;
   outline: none;
   border: none;
-  border-bottom: solid #ccc 1px;
+  border-bottom: solid var(--border-color) 1px;
   line-height: 1.15rem;
   font-size: 1.15rem;
 }

@@ -23,4 +23,7 @@ cypress/screenshots
 # Test coverage
 coverage/
 
+# Vitest JSON report (generated in CI/local, not committed)
+test-results.json
+
 

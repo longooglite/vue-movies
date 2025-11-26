@@ -51,8 +51,8 @@ const showDetails = ref(
   flex-direction: column;
   align-items: flex-start;
   width: calc(50% - 20px);
-  border-bottom: 1px solid #ccc;
-  border-left: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
   margin-bottom: 10px;
   padding-left: 10px;
   padding-bottom: 10px;

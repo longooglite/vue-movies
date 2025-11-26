@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, provide, reactive, getCurrentInstance } from 'vue'
+import { computed, inject, provide, reactive } from 'vue'
 import { movieFilterProviderKey } from '../types/providers/MovieFilterProvider'
 import {
   awsMovieProviderKey,
