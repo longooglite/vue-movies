@@ -15,7 +15,7 @@ const updateBooleanValue = (newValue: TriStateBooleanValues) => {
 }
 </script>
 <template>
-  <div className="tri-state-boolean-options">
+  <div class="tri-state-boolean-options">
     <span
       :class="{ active: model === TriStateBooleanValues.TRUE }"
       @click="updateBooleanValue(TriStateBooleanValues.TRUE)"

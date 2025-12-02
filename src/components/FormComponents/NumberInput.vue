@@ -11,7 +11,7 @@ const updateNumberValue = (event: Event) => {
 }
 </script>
 <template>
-  <div className="number-input-container">
+  <div class="number-input-container">
     <label>
       {{ props.label }}
       <input

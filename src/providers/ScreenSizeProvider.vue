@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref, provide, onMounted, onUnmounted } from 'vue'
 import { MOBILE_BREAKPOINT } from '../consts/globals'
+import { ScreenSize, screenSizeProviderKey } from '../types/providers/ScreenSizeProvider'
 
-const screenSize = ref('mobile')
+const screenSize = ref(ScreenSize.MOBILE)
 
 const setScreenSize = (innerWidth: number) => {
-  screenSize.value = innerWidth > MOBILE_BREAKPOINT ? 'desktop' : 'mobile'
+  screenSize.value = innerWidth > MOBILE_BREAKPOINT ? ScreenSize.DESKTOP : ScreenSize.MOBILE
 }
 
 const handleResize = () => {
@@ -21,6 +22,6 @@ onMounted(() => {
   window.addEventListener('resize', handleResize)
 })
 
-provide('screenSize', screenSize)
+provide(screenSizeProviderKey, screenSize)
 </script>
 <template><slot></slot></template>
