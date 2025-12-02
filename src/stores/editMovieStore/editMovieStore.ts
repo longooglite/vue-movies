@@ -1,16 +1,7 @@
 import { defineStore } from 'pinia'
 import { Movie } from '../../types/types'
 import { ref } from 'vue'
-
-const DEFAULT_MOVIE: Movie = {
-  id: '',
-  title: '',
-  year: 0,
-  director: '',
-  decade: '',
-  country: '',
-  genre: [],
-}
+import { DEFAULT_MOVIE } from '../../consts/globals'
 
 export const useEditMovieStore = defineStore('editMovie', () => {
   const movie = ref<Movie>(DEFAULT_MOVIE)
