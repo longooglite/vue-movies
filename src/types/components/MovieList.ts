@@ -1,5 +1,5 @@
 import type { InjectionKey, Ref } from 'vue'
-import type { Movie } from '../types/types'
+import { Movie } from '../types'
 
 export const movieListEntryMovieKey: InjectionKey<Movie | Omit<Movie, 'id'>> =
   Symbol('movieListEntryMovie')
