@@ -4,6 +4,7 @@ import { DrawerIds } from '../../types/providers/DrawerProvider'
 import { PhList, PhFunnel } from '@phosphor-icons/vue'
 import TheFilterRow from '../TheFilterRow/TheFilterRow.vue'
 import { inject, type Ref } from 'vue'
+import { screenSizeProviderKey } from '../../types/providers/ScreenSizeProvider'
 const drawerStore = useDrawerStore()
 const openNavigation = () => {
   drawerStore.openDrawer(DrawerIds.NAVIGATION)
@@ -11,7 +12,7 @@ const openNavigation = () => {
 const openMobileFilter = () => {
   drawerStore.openDrawer(DrawerIds.MOBILE_FILTER)
 }
-const screenSize = inject('screenSize') as Ref<string>
+const screenSize = inject(screenSizeProviderKey) as Ref<string>
 </script>
 <template>
   <div class="the-header" :class="{ mobile: screenSize === 'mobile' }">

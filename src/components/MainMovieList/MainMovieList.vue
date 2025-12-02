@@ -9,7 +9,7 @@ import { useEditMovieStore } from '../../stores/editMovieStore/editMovieStore'
 import { Movie } from '../../types/types'
 import { useDrawerStore } from '../../stores/drawerStore/drawerStore'
 import { DrawerIds } from '../../types/providers/DrawerProvider'
-import { screenSizeProviderKey } from '../../consts/symbols'
+import { screenSizeProviderKey } from '../../types/providers/ScreenSizeProvider'
 
 const drawerStore = useDrawerStore()
 const { filteredMovies } = inject(

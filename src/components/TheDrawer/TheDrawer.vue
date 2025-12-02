@@ -10,6 +10,7 @@ import TheDrawerHeader from './TheDrawerHeader.vue'
 import SearchMoviesDrawer from '../DrawerComponents/SearchMoviesDrawer.vue'
 import NavigationDrawer from '../DrawerComponents/NavigationDrawer.vue'
 import MobileFilterDrawer from '../DrawerComponents/MobileFilterDrawer.vue'
+import { screenSizeProviderKey } from '../../types/providers/ScreenSizeProvider'
 
 const drawerStore = useDrawerStore()
 const editMovieStore = useEditMovieStore()
@@ -29,7 +30,7 @@ const drawerTitle = computed(() => {
       return ''
   }
 })
-const screenSize = inject('screenSize') as Ref<string>
+const screenSize = inject(screenSizeProviderKey) as Ref<string>
 </script>
 <template>
   <Teleport to="body">
