@@ -34,7 +34,6 @@ const options = computed(() => {
 })
 
 const handleChange = (value: (string | number)[] | null) => {
-  console.log('handleChange', value)
   if (!value?.length) {
     currentValue.value = null
     updateActiveFilters(props.filterKey, null)

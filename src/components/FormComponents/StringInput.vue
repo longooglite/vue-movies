@@ -11,7 +11,7 @@ const updateStringValue = (event: Event) => {
 }
 </script>
 <template>
-  <div className="string-input-container">
+  <div class="string-input-container">
     <label>
       <span class="string-input-label" v-if="props.label">{{ props.label }}</span>
       <input

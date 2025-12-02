@@ -21,11 +21,6 @@ const clickCallback = (movie: Movie) => {
   drawerStore.openDrawer(DrawerIds.EDIT_MOVIE)
 }
 const screenSize = inject('screenSize') as Ref<string>
-const logScreenSize = () => {
-  console.log(screenSize.value)
-}
-console.log(logScreenSize())
-console.log(logScreenSize)
 </script>
 
 <template>
