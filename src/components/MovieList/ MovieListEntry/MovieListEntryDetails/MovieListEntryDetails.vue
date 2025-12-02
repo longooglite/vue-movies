@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import { Movie } from '../../../../types/types'
-const movie = inject('movie-list-entry-movie') as Movie
+import { movieListEntryMovieKey } from '../../../../types/components/MovieList'
+const movie = inject(movieListEntryMovieKey) as Movie
 const props = defineProps<{
   movieKey: string
 }>()

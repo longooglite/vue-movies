@@ -3,13 +3,17 @@ import { inject, provide, ref, type Ref } from 'vue'
 import { Movie } from '../../../types/types'
 import MovieListEntryTitle from './MovieListEntryTitle/MovieListEntryTitle.vue'
 import MovieListEntryDetails from './MovieListEntryDetails/MovieListEntryDetails.vue'
+import {
+  movieListEntryMovieKey,
+  movieListSingleColumnKey,
+} from '../../../types/components/MovieList'
 
 const props = defineProps<{
   movie: Movie | Omit<Movie, 'id'>
 }>()
 const extendedDetails = ref(false)
-provide('movie-list-entry-movie', props.movie)
-const singleColumn = inject('movie-list-single-column') as Ref<boolean>
+provide(movieListEntryMovieKey, props.movie)
+const singleColumn = inject(movieListSingleColumnKey) as Ref<boolean>
 const showDetails = ref(
   Boolean(
     props.movie.country ||

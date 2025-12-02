@@ -2,13 +2,17 @@
 import { inject } from 'vue'
 import { Movie } from '../../../../types/types'
 import { PhPencilSimple } from '@phosphor-icons/vue'
+import {
+  movieListEntryMovieKey,
+  movieListEntryClickCallbackKey,
+} from '../../../../types/components/MovieList'
 
 const props = defineProps<{
   expand: boolean
 }>()
 
-const movie = inject('movie-list-entry-movie') as Movie
-const clickCallback = inject('movie-list-entry-click-callback') as (
+const movie = inject(movieListEntryMovieKey) as Movie
+const clickCallback = inject(movieListEntryClickCallbackKey) as (
   movie: Movie,
 ) => void
 const onClick = () => {

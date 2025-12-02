@@ -2,6 +2,10 @@
 import MovieListEntry from './ MovieListEntry/MovieListEntry.vue'
 import { Movie } from '../../types/types'
 import { provide, computed } from 'vue'
+import {
+  movieListEntryClickCallbackKey,
+  movieListSingleColumnKey,
+} from '../../types/components/MovieList'
 
 const props = defineProps<{
   movies: Movie[] | Omit<Movie, 'id'>[]
@@ -10,8 +14,8 @@ const props = defineProps<{
   singleColumn?: boolean
 }>()
 
-provide('movie-list-entry-click-callback', props.clickCallback)
-provide('movie-list-single-column', computed(() => Boolean(props.singleColumn)))
+provide(movieListEntryClickCallbackKey, props.clickCallback)
+provide(movieListSingleColumnKey, computed(() => Boolean(props.singleColumn)))
 </script>
 
 <template>
