@@ -10,7 +10,8 @@ import TheDrawerHeader from './TheDrawerHeader.vue'
 import SearchMoviesDrawer from '../DrawerComponents/SearchMoviesDrawer.vue'
 import NavigationDrawer from '../DrawerComponents/NavigationDrawer.vue'
 import MobileFilterDrawer from '../DrawerComponents/MobileFilterDrawer.vue'
-import { screenSizeProviderKey } from '../../types/providers/ScreenSizeProvider'
+import { screenSizeProviderKey, ScreenSize } from '../../types/providers/ScreenSizeProvider'
+import MovieDetailsDrawer from '../DrawerComponents/MovieDetailsDrawer.vue'
 
 const drawerStore = useDrawerStore()
 const editMovieStore = useEditMovieStore()
@@ -26,6 +27,8 @@ const drawerTitle = computed(() => {
       return DrawerTitles.NAVIGATION
     case DrawerIds.MOBILE_FILTER:
       return DrawerTitles.MOBILE_FILTER
+    case DrawerIds.MOVIE_DETAILS:
+      return DrawerTitles.MOVIE_DETAILS
     default:
       return ''
   }
@@ -36,7 +39,7 @@ const screenSize = inject(screenSizeProviderKey) as Ref<string>
   <Teleport to="body">
     <div
       class="the-drawer" 
-      :class="{ mobile: screenSize === 'mobile' }"
+      :class="{ mobile: screenSize === ScreenSize.MOBILE }"
       v-show="drawerStore.drawerOpen"
     >
       <TheDrawerHeader>
@@ -71,6 +74,12 @@ const screenSize = inject(screenSizeProviderKey) as Ref<string>
         <MobileFilterDrawer
           v-if="
             drawerStore.currentDrawerId === DrawerIds.MOBILE_FILTER &&
+            drawerStore.drawerOpen
+          "
+        />
+        <MovieDetailsDrawer
+          v-if="
+            drawerStore.currentDrawerId === DrawerIds.MOVIE_DETAILS &&
             drawerStore.drawerOpen
           "
         />

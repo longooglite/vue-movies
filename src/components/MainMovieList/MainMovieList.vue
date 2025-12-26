@@ -9,17 +9,23 @@ import { useEditMovieStore } from '../../stores/editMovieStore/editMovieStore'
 import { Movie } from '../../types/types'
 import { useDrawerStore } from '../../stores/drawerStore/drawerStore'
 import { DrawerIds } from '../../types/providers/DrawerProvider'
-import { screenSizeProviderKey } from '../../types/providers/ScreenSizeProvider'
+import { screenSizeProviderKey, ScreenSize } from '../../types/providers/ScreenSizeProvider'
+import { useMovieDetailsStore } from '../../stores/movieDetailsStore/movieDetailsStore'
 
 const drawerStore = useDrawerStore()
+const movieDetailsStore = useMovieDetailsStore()
 const { filteredMovies } = inject(
   movieFilterProviderKey,
 ) as MovieFilterProviderReturn
 const { loading } = inject(awsMovieProviderKey) as AwsMovieProviderReturn
 const editMovieStore = useEditMovieStore()
-const clickCallback = (movie: Movie) => {
+const editMovieClickCallback = (movie: Movie) => {
   editMovieStore.setMovie(movie)
   drawerStore.openDrawer(DrawerIds.EDIT_MOVIE)
+}
+const movieDetailsClickCallback = (movie: Movie) => {
+  movieDetailsStore.setMovie(movie)
+  drawerStore.openDrawer(DrawerIds.MOVIE_DETAILS)
 }
 const screenSize = inject(screenSizeProviderKey)
 </script>
@@ -28,8 +34,11 @@ const screenSize = inject(screenSizeProviderKey)
   <MovieList
     :movies="filteredMovies"
     :loading="loading"
-    :clickCallback="clickCallback"
-    :singleColumn="screenSize === 'mobile'"
+    :clickCallbacks="{
+      editMovie: editMovieClickCallback,
+      movieDetails: movieDetailsClickCallback,
+    }"
+    :singleColumn="screenSize === ScreenSize.MOBILE"
   />
 </template>
 <style scoped>

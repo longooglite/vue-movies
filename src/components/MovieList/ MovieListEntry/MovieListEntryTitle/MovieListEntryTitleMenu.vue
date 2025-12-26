@@ -1,29 +1,54 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 import { Movie } from '../../../../types/types'
-import { PhPencilSimple } from '@phosphor-icons/vue'
+import { PhPencilSimple, PhInfo } from '@phosphor-icons/vue'
 import {
   movieListEntryMovieKey,
   movieListEntryClickCallbackKey,
 } from '../../../../types/components/MovieList'
+import { screenSizeProviderKey, ScreenSize } from '../../../../types/providers/ScreenSizeProvider'
 
 const props = defineProps<{
   expand: boolean
 }>()
 
+const screenSize = inject(screenSizeProviderKey)
 const movie = inject(movieListEntryMovieKey) as Movie
-const clickCallback = inject(movieListEntryClickCallbackKey) as (
-  movie: Movie,
-) => void
-const onClick = () => {
-  if (clickCallback) {
-    clickCallback(movie)
+const clickCallbacks = inject(movieListEntryClickCallbackKey) as {
+  editMovie?: (movie: Movie) => void
+  movieDetails?: (movie: Movie) => void
+}
+const editMovieClickCallback = () => {
+  if (clickCallbacks?.editMovie) {
+    clickCallbacks.editMovie(movie)
+  }
+}
+const movieDetailsClickCallback = () => {
+  console.log(movie)
+  console.log(clickCallbacks)
+  if (clickCallbacks?.movieDetails) {
+    clickCallbacks.movieDetails(movie)
   }
 }
 </script>
 <template>
-  <div class="movie-list-entry-title-menu" :class="{ open: props.expand }">
-    <button @click="onClick"><PhPencilSimple /></button>
+  <div class="movie-list-entry-title-menu" :class="{
+    open: props.expand || screenSize === ScreenSize.MOBILE
+  }">
+    <button
+      v-if="clickCallbacks?.editMovie"
+      @click="editMovieClickCallback"
+      class="movie-list-entry-title-menu-button"
+    >
+      <PhPencilSimple />
+    </button>
+    <button 
+      v-if="clickCallbacks?.movieDetails" 
+      @click="movieDetailsClickCallback"
+      class="movie-list-entry-title-menu-button"
+    >
+      <PhInfo class="movie-list-entry-title-menu-icon" />
+    </button>
   </div>
 </template>
 <style scoped>
@@ -34,7 +59,9 @@ const onClick = () => {
   align-items: center;
   justify-content: center;
   position: absolute;
-  display: block;
+  display: flex;
+  gap: 5px;
+  margin-left: 5px;
   overflow: hidden;
   interpolate-size: allow-keywords;
   top: 0;

@@ -25,7 +25,7 @@ const clickCallback = (movie: Movie) => {
       :movies="searchResults"
       :loading="false"
       :singleColumn="true"
-      :clickCallback="clickCallback"
+      :clickCallbacks="{editMovie: clickCallback}"
     />
   </div>
 </template>

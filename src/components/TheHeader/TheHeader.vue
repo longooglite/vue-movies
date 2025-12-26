@@ -5,6 +5,7 @@ import { PhList, PhFunnel } from '@phosphor-icons/vue'
 import TheFilterRow from '../TheFilterRow/TheFilterRow.vue'
 import { inject, type Ref } from 'vue'
 import { screenSizeProviderKey } from '../../types/providers/ScreenSizeProvider'
+import { ScreenSize } from '../../types/providers/ScreenSizeProvider'
 const drawerStore = useDrawerStore()
 const openNavigation = () => {
   drawerStore.openDrawer(DrawerIds.NAVIGATION)
@@ -12,19 +13,19 @@ const openNavigation = () => {
 const openMobileFilter = () => {
   drawerStore.openDrawer(DrawerIds.MOBILE_FILTER)
 }
-const screenSize = inject(screenSizeProviderKey) as Ref<string>
+const screenSize = inject(screenSizeProviderKey) as Ref<ScreenSize>
 </script>
 <template>
-  <div class="the-header" :class="{ mobile: screenSize === 'mobile' }">
+  <div class="the-header" :class="{ mobile: screenSize === ScreenSize.MOBILE }">
     <div class="header-left">
       <button @click="openNavigation"><PhList /></button>
     </div>
     <h1>Movie List</h1>
     <div class="header-right">
-      <button v-if="screenSize === 'mobile'" @click="openMobileFilter"><PhFunnel /></button>
+      <button v-if="screenSize === ScreenSize.MOBILE" @click="openMobileFilter"><PhFunnel /></button>
     </div>
   </div>
-  <TheFilterRow v-if="screenSize === 'desktop'" />
+  <TheFilterRow v-if="screenSize === ScreenSize.DESKTOP" />
 </template>
 <style scoped>
 .the-header {
