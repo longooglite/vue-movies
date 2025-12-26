@@ -25,5 +25,6 @@ const toggleExpand = () => {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  cursor: pointer;
 }
 </style>

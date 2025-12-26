@@ -32,7 +32,7 @@ provide(DefaultApolloClient, useApolloClient() as ApolloClient<any>)
 @import url('https://fonts.cdnfonts.com/css/geist-sans');
 @import url('https://fonts.cdnfonts.com/css/geist-mono');
 
-/* Global variables */
+/* Global variables */  
 :root {
   --app-bg: #f5f5f5;
   --font-sans:

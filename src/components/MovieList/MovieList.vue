@@ -10,11 +10,14 @@ import {
 const props = defineProps<{
   movies: Movie[] | Omit<Movie, 'id'>[]
   loading: boolean
-  clickCallback?: (movie: Movie) => void
+  clickCallbacks?: {
+    editMovie?: (movie: Movie) => void
+    movieDetails?: (movie: Movie) => void
+  }
   singleColumn?: boolean
 }>()
-
-provide(movieListEntryClickCallbackKey, props.clickCallback)
+console.log(props.clickCallbacks)
+provide(movieListEntryClickCallbackKey, props.clickCallbacks ?? {})
 provide(movieListSingleColumnKey, computed(() => Boolean(props.singleColumn)))
 </script>
 
