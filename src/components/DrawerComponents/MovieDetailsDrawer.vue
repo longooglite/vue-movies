@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useMovieDetailsStore } from '../../stores/movieDetailsStore/movieDetailsStore'
+import { paragraphText } from '../../utils/paragraphText'
 
 const movieDetailsStore = useMovieDetailsStore()
 const movie = movieDetailsStore.movie
@@ -37,7 +38,7 @@ const watched = computed(() => {
       </div>
       <div v-if="movie.description" class="movie-details-drawer-content-item description">
         <span class="movie-details-drawer-content-item-label">Description</span>
-        <span class="movie-details-drawer-content-item-value">{{ movie.description }}</span>
+        <span class="movie-details-drawer-content-item-value">{{ paragraphText(movie.description) }}</span>
       </div>
       <div v-if="movie.format" class="movie-details-drawer-content-item">
         <span class="movie-details-drawer-content-item-label">Format</span>
