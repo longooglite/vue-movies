@@ -5,12 +5,8 @@ import { Movie } from '../types/types'
 
 const callbacks = {
     movieListEntry: {
-        editMovie: (movie: Movie) => {
-            console.log(movie)
-        },  
-        movieDetails: (movie: string) => {
-            console.log(movie)
-        }
+        editMovie: (_movie: Movie) => {},
+        movieDetails: (_movie: Movie) => {},
     }
 }
 
