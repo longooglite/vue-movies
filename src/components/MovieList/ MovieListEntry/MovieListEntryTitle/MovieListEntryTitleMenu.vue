@@ -24,8 +24,6 @@ const editMovieClickCallback = () => {
   }
 }
 const movieDetailsClickCallback = () => {
-  console.log(movie)
-  console.log(clickCallbacks)
   if (clickCallbacks?.movieDetails) {
     clickCallbacks.movieDetails(movie)
   }

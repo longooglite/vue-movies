@@ -16,7 +16,6 @@ const props = defineProps<{
   }
   singleColumn?: boolean
 }>()
-console.log(props.clickCallbacks)
 provide(movieListEntryClickCallbackKey, props.clickCallbacks ?? {})
 provide(movieListSingleColumnKey, computed(() => Boolean(props.singleColumn)))
 </script>
