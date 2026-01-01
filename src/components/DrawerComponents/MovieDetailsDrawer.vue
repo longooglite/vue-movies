@@ -76,7 +76,7 @@ const watched = computed(() => {
   font-weight: normal;
   text-transform: capitalize;
 }
-.movie-details-drawer-content-item.description {
+.movie-details-drawer-content-item.description .movie-details-drawer-content-item-value {
   text-transform: none;
 }
 </style>
