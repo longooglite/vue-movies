@@ -25,8 +25,8 @@ const sortByYear = (
 ) => yearA - yearB
 
 const movies = computed(() => {
-  if (result.value?.movies) {
-    return [...result.value.movies].sort(sortByYear)
+  if (result.value?.listMovies?.items) {
+    return [...result.value?.listMovies?.items].sort(sortByYear).filter((movie) => movie.title)
   }
   return []
 })
