@@ -25,17 +25,19 @@ const sortByYear = (
 ) => yearA - yearB
 
 const movies = computed(() => {
-  if (result.value?.movies) {
-    return [...result.value.movies].sort(sortByYear)
+  if (result.value?.listMovies?.items) {
+    return [...result.value?.listMovies?.items].sort(sortByYear).filter((movie) => movie.title)
   }
   return []
 })
 const updateMovie = async (id: string, input: any) => {
+  console.log('updateMovie input', id, input)
   const result = await _updateMovie({ id, input })
   await refetch()
   return result
 }
 const createMovie = async (input: any) => {
+  console.log('input', input)
   const result = await _createMovie({ input })
   await refetch()
   return result
