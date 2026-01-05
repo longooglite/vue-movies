@@ -31,13 +31,11 @@ const movies = computed(() => {
   return []
 })
 const updateMovie = async (id: string, input: any) => {
-  console.log('updateMovie input', id, input)
   const result = await _updateMovie({ id, input })
   await refetch()
   return result
 }
 const createMovie = async (input: any) => {
-  console.log('input', input)
   const result = await _createMovie({ input })
   await refetch()
   return result
